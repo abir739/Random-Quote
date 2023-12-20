@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Your Quote of the day</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    </head>
+    <body>
+        <div class="quote-box">
+            <h2>Quote of the day</h2>
+            <blockquote id="quote_content">Loading...</blockquote>
+            <span  id="quote_author">Loading...</span>
+            <div>
+                <button onclick="getQuote(api_url);">New Quote</button>
+                <button onclick="tweet()"> Share<i class="fas fa-share"></i></button>
+            </div>
+        </div>
+        <script>
+            const quote_content = document.getElementById("quote_content");
+            const quote_author = document.getElementById("quote_author");
+            const api_url = "https://api.quotable.io/random";
+        
+            async function getQuote(url) {
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    console.log(data);
+        
+                    // Update HTML content
+                    quote_content.innerHTML = data.content;
+                    quote_author.innerHTML = data.author;
+                } catch (error) {
+                    console.error("Error fetching quote:", error);
+                }
+            }
+        
+            // Call the function to fetch and display the quote
+            getQuote(api_url);
+
+            function tweet(){
+                window.open("https://twitter.com/intent/tweet?text=" + quote_content.innerHTML + "----- by" + quote_author.innerHTML , "Tweet Window", "width=600, height=300");
+            }
+        </script>
+        
+        
+    </body>
+</html>
