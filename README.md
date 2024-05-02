@@ -1,8 +1,8 @@
 ## Random-Quote
 
-Displays a random quote from a predefined list.
-Allows users to share a quote by clicking a button.
-Responsive design for various screen sizes.
+-Displays a random quote from a predefined list.
+-Allows users to share a quote by clicking a button.
+-Responsive design for various screen sizes.
 
 ## Screenshot
 
